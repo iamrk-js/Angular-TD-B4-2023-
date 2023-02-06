@@ -1,0 +1,17 @@
+// input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
+//     border: 2px solid red !important;
+// }
+
+input, select, textarea{
+    &.ng-touched.ng-invalid {
+            border: 2px solid red !important;
+        }
+}
+
+label{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+// input.ngtouched.ng-invalid

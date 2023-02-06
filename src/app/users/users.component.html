@@ -1,0 +1,38 @@
+<h3>{{value}}</h3>
+
+<ul class="list-group">
+    <!-- <li class="list-group-item" *ngFor="let user of usersInfo">
+        {{user.name}}
+    </li> -->
+
+    <li class="list-group-item" *ngFor="let user of users$ | async">
+        {{user.id}} {{user.name}}
+    </li>
+
+
+</ul>
+
+<hr>
+
+<ul class="list-group">
+    <!-- <li class="list-group-item" *ngFor="let user of usersInfo">
+        {{user.name}}
+    </li> -->
+
+    <!-- <li class="list-group-item" *ngFor="let user of userNames">
+        {{user}}
+    </li> -->
+
+    <li class="list-group-item" *ngFor="let user of usersname$ | async">
+        {{user}}
+    </li>
+</ul>
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let user of isActiveusers">
+        {{user.name}}
+    </li>
+</ul>
+
+
+<button class="btn btn-primary" #btn>click</button>

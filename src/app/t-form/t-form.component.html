@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-sm-12">
+        <form #userForm="ngForm" (ngSubmit)="onUserFormSubmit(userForm)">
+            <div ngModelGroup="userDetails" #userDetails="ngModelGroup">
+                <div class="form-group">
+                    <label for="username">Username*</label>
+                    <input type="text" ngModel required name="username" id="username" #username="ngModel"
+                        class="form-control">
+                    <span class="alert alert-danger d-block" *ngIf="username.touched && username.invalid">
+                        Username is Mandetory field.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email*</label>
+                    <input type="text" ngModel name="email" id="Email" #email="ngModel" required email class="form-control">
+                    <span class="alert alert-danger d-block" *ngIf="email.invalid && email.touched">
+                        Email is mandetory Field
+                    </span>
+                </div>
+            </div>
+          
+            <div class="form-group">
+                <label for="secrectQuestion">Secrect Question</label>
+                <select name="secrectQuestion" #secrectQuestion="ngModel" [ngModel]="secerectQuestionDefault"
+                    id="secrectQuestion" required class="form-control">
+                    <option value="favourateTeacher">favourate teacher</option>
+                    <option value="favourateBook">favourate book</option>
+                </select>
+                <span class="alert alert-danger d-block" *ngIf="secrectQuestion.invalid && secrectQuestion.touched">
+                    Secrect Question is mandetory Field
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="answer">Answer</label>
+                <textarea name="answer" required class="form-control" [(ngModel)]="ans" #answer="ngModel" id=""
+                    rows="4"></textarea>
+                    <p>
+                        {{ans}}
+                    </p>
+            </div>
+            <div class="form-group">
+                <label for="modeOfContact">
+                    Mode of contact
+                </label>
+                <select name="modeOfContact" ngModel id="" class="form-control" required>
+                    <option value="">Select Mode of Contact</option>
+                    <option [value]="mode.id" *ngFor="let mode of contactMode">
+                        {{mode.noc}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="isSubscribed">
+                    <input type="checkbox" ngModel name="isSubscribed" id="isSubscribed">
+                    Subcribe to email
+                </label>
+            </div>
+            <div class="radio form-group" *ngFor="let mode of contactMode">
+                <label for="contactModeByrd">
+                    <input type="radio" ngModel required name="contactModeByrd" [value]="mode.id">
+                    {{mode.noc}}
+                </label>
+            </div>
+            <!-- <div class="radio form-group">
+                <label for="contactModeByrd">
+                    <input type="radio" ngModel required name="contactModeByrd" id="contactModeByrd" value="2">
+                    Phone
+                </label>
+            </div> -->
+            <div>
+                <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary mx-4" (click)="onUpdatevalues()" type="button">Patch Values in Form</button>
+            </div>
+        </form>
+        <h3 class="my-4">
+            {{userForm.value | json}}
+        </h3>
+    </div>
+</div>
